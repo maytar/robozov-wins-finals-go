@@ -1,0 +1,3 @@
+[submodule "ProjectKerrigan"]
+	path = ProjectKerrigan
+	url = https://github.com/Zealotoid/ProjectKerrigan.git
