@@ -1,0 +1,1 @@
+print "What can a code say?"
