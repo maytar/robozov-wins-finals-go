@@ -1,7 +1,7 @@
 import socket
 import struct
 
-SERVER_IP = "10.2.160.1"
+SERVER_IP = "10.2.160.5"
 SERVER_PORT = 1234
 ADDRESS = (SERVER_IP, SERVER_PORT)
 PROTO_FAMILY = socket.SOCK_DGRAM # SOCK_STREAM or SOCK_DGRAM
@@ -15,10 +15,12 @@ class Transmitter:
 		# self.s.connect((SERVER_IP, SERVER_PORT))
 
 	def send(self, motors):
+		checkNegativity = lambda x: 1 if x > 0 else 0
+
 		buf = ""
-		buf += pack(motors[0])
-		buf += pack(motors[1])
-		buf += pack(motors[2])
+		for i in range(3):
+			buf += pack(checkNegativity(motors[i]))
+			buf += pack(motors[i])
 
 		print buf
 
